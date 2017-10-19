@@ -1,4 +1,4 @@
-# Linux Scheduler
+# VSLS - Very Simple Linux Scheduler
 
 * based on simple shellscript
 * no database or installation required
