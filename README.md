@@ -9,6 +9,48 @@
 
 I've built this scheduler for environments where you can't install any software.
 
+**schedule your chain**:
+
+* linux feature: cron jobs
+* workaround: while sleep loop
+
+If you are not allowed to use cron, you can create a shellscript like master.sh that contain an endless loop. Don't forget a sleep delay to reduce the system workload. Inside this loop you can parse system time and speficy crontab like execution rules.
+
+**start your chain**:
+
+```
+$ cd ~/scheduler/job
+$ . start.sh
+start master . /home/myuser/scheduler/job/master.sh
+master loop 1439 nohup /home/myuser/scheduler/job/chain.sh >/dev/null 2>&1 &
+master loop 1438 nohup /home/myuser/scheduler/job/chain.sh >/dev/null 2>&1 &
+```
+
+**cancle your chain**:
+
+```
+$ cd ~/scheduler/job
+$ . cancle.sh
+cancle master
+```
+
+**monitor your chain**:
+
+```
+$ cd ~/scheduler/status
+$ ls -l -t --time-style=+'%c '
+-rw------- 1 myuser user    8 Thu 19 Oct 2017 09:44:52 PM CEST  master_end
+-rw------- 1 myuser user   54 Thu 19 Oct 2017 09:44:52 PM CEST  master_start
+-rw------- 1 myuser user   43 Thu 19 Oct 2017 09:43:12 PM CEST  job3_end
+-rw------- 1 myuser user   45 Thu 19 Oct 2017 09:43:11 PM CEST  job3_start
+-rw------- 1 myuser user   44 Thu 19 Oct 2017 09:43:11 PM CEST  job2b_end
+-rw------- 1 myuser user   44 Thu 19 Oct 2017 09:43:09 PM CEST  job2a_end
+-rw------- 1 myuser user   46 Thu 19 Oct 2017 09:43:08 PM CEST  job2b_start
+-rw------- 1 myuser user   46 Thu 19 Oct 2017 09:43:08 PM CEST  job2a_start
+-rw------- 1 myuser user   43 Thu 19 Oct 2017 09:43:08 PM CEST  job1_end
+-rw------- 1 myuser user   45 Thu 19 Oct 2017 09:43:07 PM CEST  job1_start
+```
+
 ## Steps = program
 
 * single processing step
