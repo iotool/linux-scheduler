@@ -5,14 +5,14 @@
 # 
 # Scheduler - Jobkette in einer Schleife wiederholt starten
 # schedulerdir : Hauptverzeichnis vom Scheduler
-# exittimeout  : Schleife beenden (keine Endlosschliefe)
-# sleepsecond  : Wartezeit zwischen Aufrufen
+# exittimeout  : 24 Stunden - Schleife beenden (keine Endlosschliefe)
+# sleepsecond  : 1 Minute - Wartezeit zwischen Aufrufen
 
 schedulerdir=/home/myuser/scheduler
 #chaincommand=". ${schedulerdir}/job/chain.sh"
 chaincommand="nohup ${schedulerdir}/job/chain.sh >/dev/null 2>&1 &"
 exittimeout=1440
-sleepsecond=1
+sleepsecond=60
 
 # Hauptschleife
 while [[ $exittimeout -gt 1 ]]
