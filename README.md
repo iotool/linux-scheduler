@@ -33,8 +33,8 @@ Just copy existing job and rename jobname, specify the stepscript / dependencies
 **jobx.sh**:
 
 ```
-jobname=job1
-stepscript=/step/step1.sh
+jobname=jobx
+stepscript=/step/stepx.sh
 schedulerdir=/home/myuser/scheduler
 parentcount=0
 
@@ -71,7 +71,7 @@ Add new jobs to the chain shellscript. There is no sort order for dependencies b
 #!/bin/sh
 schedulerdir=/home/myuser/scheduler
 parentcount=0
-if [[ ! -e "${schedulerdir}/status/job3_end" ]]; then parentcount=$(( $parentcount + 1 )); fi
+if [[ ! -e "${schedulerdir}/status/jobx_end" ]]; then parentcount=$(( $parentcount + 1 )); fi
 if [[ ! -e "${schedulerdir}/status/master_start" ]]; then parentcount=$(( $parentcount + 1 )); fi
 if [[ -e "${schedulerdir}/status/master_end" ]]; then parentcount=$(( $parentcount + 1 )); fi
 if [[ $parentcount -eq 0 ]]
