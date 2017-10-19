@@ -26,6 +26,8 @@ master loop 1439 nohup /home/myuser/scheduler/job/chain.sh >/dev/null 2>&1 &
 master loop 1438 nohup /home/myuser/scheduler/job/chain.sh >/dev/null 2>&1 &
 ```
 
+You can start your chain manually or by cron.
+
 **cancle your chain**:
 
 ```
@@ -33,6 +35,8 @@ $ cd ~/scheduler/job
 $ . cancle.sh
 cancle master
 ```
+
+Use cancle to force exit the main loop of the master script. You don't need to kill processes. With cancle you are able to terminate your chain that is running on clustered infrastructure with shared filesystems.
 
 **monitor your chain**:
 
@@ -50,6 +54,8 @@ $ ls -l -t --time-style=+'%c '
 -rw------- 1 myuser user   43 Thu 19 Oct 2017 09:43:08 PM CEST  job1_end
 -rw------- 1 myuser user   45 Thu 19 Oct 2017 09:43:07 PM CEST  job1_start
 ```
+
+The schedule is using files to controle the workflow. 
 
 ## Steps = program
 
